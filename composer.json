@@ -1,0 +1,27 @@
+{
+	"name": "pcrt/yii2-attachments",
+	"type": "library",
+	"description": "Yii2-select2 attachments management implementation",
+	"license": "BSD-3-Clause",
+	"version": "1.0.0",
+	"authors": [
+		{
+			"name": "Marco Petrini",
+			"email": "info@protocollicreativi.it",
+			"homepage": "http://www.protocollicreativi.it"
+		}
+	],
+	"minimum-stability": "stable",
+	"support": {
+		"source": "https://github.com/pcrt/yii2-attachments",
+		"issues": "https://github.com/pcrt/yii2-attachments/issues"
+	},
+	"autoload": {
+        "psr-4": {"pcrt\\file\\": ""}
+    },
+
+	"require": {
+        "php": ">=7.4.0",
+        "yiisoft/yii2": "^2.0.43"
+    }
+}
