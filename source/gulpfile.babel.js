@@ -33,7 +33,7 @@ const paths = {
   }
 }
 
-const basename = 'main'
+const basename = 'main.' + Date.now()
 
 /*
  * You can also declare named functions and export them as tasks
@@ -67,7 +67,7 @@ export function scripts() {
     })
     .pipe(source(basename+'.js'))
     .pipe(buffer())
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest(paths.scripts.dest))
 }
 

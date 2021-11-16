@@ -16,10 +16,13 @@ use yii\widgets\ListView;
       <div class="fileText">
         <div class="fileTitle">
           <div id="labelTextFile<?=$file->id?>" class="labelFileTitle" onclick="editTextFile(<?=$file->id?>)">
-          <span id="labelFileTitle<?=$file->id?>"><?= $file->title ?></span><!--<div class="labelFileTitleIcon edit"></div>-->
+            <span id="labelFileTitle<?=$file->id?>"><?= $file->title ?></span>
+            <div class="fileIcon"><?= file_get_contents(Yii::getAlias('@file') . '/assets/images/edit-regular.svg') ?></div>
           </div>
           <div id="editTextFile<?=$file->id?>" class="editFileTitle" style="display:none;">
-            <input id="textFile<?=$file->id?>" class="inputTitle" type="text" value="<?=$file->title?>" data-id="<?=$file->id?>"/><div class="editFileTitleIcon check" onclick="updateTextFile(<?=$file->id?>)"></div>
+            <input id="textFile<?=$file->id?>" class="inputTitle" type="text" value="<?=$file->title?>" data-id="<?=$file->id?>"/>
+            <div class="editFileTitleIcon" onclick="closeTextFile(<?=$file->id?>)"><?= file_get_contents(Yii::getAlias('@file') . '/assets/images/times-solid.svg') ?></div>
+            <div class="editFileTitleIcon" onclick="updateTextFile(<?=$file->id?>)"><?= file_get_contents(Yii::getAlias('@file') . '/assets/images/check-solid.svg') ?></div>
           </div>
         </div>
         <div class="fileOriginalName"><?= $file->original_filename ?></div>
@@ -40,8 +43,8 @@ use yii\widgets\ListView;
       </div>
       <div id="editFileExpire<?=$file->id?>" class="editFileExpire" style="display:none;">
         <input id="expireFile<?=$file->id?>" class="inputExpire" type="date" value="<?=$file->expired_date?>" data-id="<?=$file->id?>"/>
-        <div class="editFileTitleIcon check" onclick="updateExpireFile(<?=$file->id?>)"></div>
-        <div class="resetFileTitleIcon reset" onclick="resetExpireFile(<?=$file->id?>)"></div>
+        <div class="resetFileTitleIcon" onclick="resetExpireFile(<?=$file->id?>)"><?= file_get_contents(Yii::getAlias('@file') . '/assets/images/times-solid.svg') ?></div>
+        <div class="editFileTitleIcon" onclick="updateExpireFile(<?=$file->id?>)"><?= file_get_contents(Yii::getAlias('@file') . '/assets/images/check-solid.svg') ?></div>
       </div>
     </div>
     <div class="fileMenuWrapper">

@@ -44,65 +44,69 @@ $this->registerJs($script);
 
 <script type="text/javascript">
 
-function editTextFile(id){
-  $('#labelTextFile'+id).hide();
-  $('#editTextFile'+id).show();
-}
+  function editTextFile(id){
+    $('#labelTextFile'+id).hide();
+    $('#editTextFile'+id).show();
+  }
 
-function updateTextFile(id){
-  var value = $('#textFile'+id).val();
-  var field = 'title';
-  window.fUploader.updateFile(id, value, field).done(function(){
-    $('#labelFileTitle'+id).html(value);
+  function updateTextFile(id){
+    var value = $('#textFile'+id).val();
+    var field = 'title';
+    window.fUploader.updateFile(id, value, field).done(function(){
+      $('#labelFileTitle'+id).html(value);
+      closeTextFile(id)
+    });
+  }
+
+  function closeTextFile(id){
     $('#labelTextFile'+id).show();
     $('#editTextFile'+id).hide();
-  });
-}
+  }
 
-function editExpireFile(id){
-  $('#labelFileExpire'+id).hide();
-  $('#editFileExpire'+id).show();
-}
+  function editExpireFile(id){
+    $('#labelFileExpire'+id).hide();
+    $('#editFileExpire'+id).show();
+  }
 
-function updateExpireFile(id){
-  var value = $('#expireFile'+id).val();
-  var field = 'expired_date';
-  window.fUploader.updateFile(id, value, field).done(function(){
-    if(value == ""){
-      value = 'Nessuna Scadenza';
-      $('#spanFileExpire'+id).html(value);
-    }else{
-      var d = new Date(value);
-      $('#spanFileExpire'+id).html(d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear());
-    }
-    $('#labelFileExpire'+id).show();
-    $('#editFileExpire'+id).hide();
-  });
-}
+  function updateExpireFile(id){
+    var value = $('#expireFile'+id).val();
+    var field = 'expired_date';
+    window.fUploader.updateFile(id, value, field).done(function(){
+      if(value == ""){
+        value = 'Nessuna Scadenza';
+        $('#spanFileExpire'+id).html(value);
+      }else{
+        var d = new Date(value);
+        $('#spanFileExpire'+id).html(d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear());
+      }
+      $('#labelFileExpire'+id).show();
+      $('#editFileExpire'+id).hide();
+    });
+  }
 
-function resetExpireFile(id){
-  var value = '';
-  var field = 'expired_date';
-  window.fUploader.updateFile(id, value, field).done(function(){
-    if(value == ""){
-      value = 'Nessuna Scadenza';
-      $('#spanFileExpire'+id).html(value);
-    }else{
-      var d = new Date(value);
-      $('#spanFileExpire'+id).html(d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear());
-    }
-    $('#labelFileExpire'+id).show();
-    $('#editFileExpire'+id).hide();
-  });
-}
+  function resetExpireFile(id){
+    var value = '';
+    var field = 'expired_date';
+    window.fUploader.updateFile(id, value, field).done(function(){
+      if(value == ""){
+        value = 'Nessuna Scadenza';
+        $('#spanFileExpire'+id).html(value);
+      }else{
+        var d = new Date(value);
+        $('#spanFileExpire'+id).html(d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear());
+      }
+      $('#labelFileExpire'+id).show();
+      $('#editFileExpire'+id).hide();
+    });
+  }
 
-function toggleArchived(el, parent) {
-  $(el).find('.caret-archived.opened').toggle()
-  $(el).find('.caret-archived.closed').toggle()
+  function toggleArchived(el, parent) {
+    $(el).find('.caret-archived.opened').toggle()
+    $(el).find('.caret-archived.closed').toggle()
 
-  $(el).closest('.fileElement').find('.fileRow.archived').each(function (index, element) {
-    $(element).toggle()
-  })
-}
+    $(el).closest('.fileElement').find('.fileRow.archived').each(function (index, element) {
+      $(element).toggle()
+    })
+  }
 
 </script>
